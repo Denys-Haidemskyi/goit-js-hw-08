@@ -63,3 +63,32 @@ const images = [
     description: "Lighthouse Coast Sea",
   },
 ];
+
+
+const galleryContainer = document.querySelector('.gallery');
+
+// Добавление элементов на страницу 
+images.forEach(image => {
+  const listItem = document.createElement('li');
+  listItem.classList.add('gallery-item');
+
+  const linkElement = document.createElement('a');
+  linkElement.classList.add('gallery-link');
+  linkElement.href = image.original;
+
+  const imgElement = document.createElement('img');
+  imgElement.classList.add('gallery-image');
+  imgElement.src = image.preview;
+  imgElement.dataset.source = image.original;
+  imgElement.alt = image.description;
+
+  linkElement.appendChild(imgElement);
+
+  listItem.appendChild(linkElement);
+
+  galleryContainer.appendChild(listItem);
+});
+
+const image = document.querySelector(".gallery-image");
+const atr = image.hasAttribute('data-sourse');
+console.log(atr);
