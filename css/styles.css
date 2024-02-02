@@ -1,5 +1,4 @@
 img {
-    pointer-events: none;
     width: 360px;
     height: 200px;
 }
@@ -20,4 +19,8 @@ ul {
     flex-wrap: wrap;
     gap: 24px;
     list-style-type: none;
+}
+
+a:hover {
+    cursor: url(/imges/pointer.svg), pointer;
 }

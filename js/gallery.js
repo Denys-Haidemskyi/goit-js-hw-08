@@ -1,3 +1,4 @@
+
 const images = [
   {
     preview:
@@ -80,7 +81,7 @@ images.forEach(image => {
   imgElement.classList.add('gallery-image');
   imgElement.src = image.preview;
   imgElement.dataset.source = image.original;
-  imgElement.alt = image.description;
+  imgElement.alt = image.description;      
 
   linkElement.appendChild(imgElement);
 
@@ -88,7 +89,15 @@ images.forEach(image => {
 
   galleryContainer.appendChild(listItem);
 });
-
-const image = document.querySelector(".gallery-image");
-const atr = image.hasAttribute('data-sourse');
-console.log(atr);
+let modal;
+// Событие клика по род.блоку
+galleryContainer.addEventListener("click", function (event) {
+  if (event.target.classList.contains('gallery-image')) {
+    event.preventDefault(); // Отмена скачивания
+    const url = event.target.dataset.source; // Получение data sourse
+    console.log(url); // Не знал удалять ли его "Видел в задании что нужно в консоль"
+    basicLightbox.create(`
+    <img width="1400" height="900" src="${url}">
+    `).show() // Создание модалки 
+  };
+});
